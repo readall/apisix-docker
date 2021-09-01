@@ -10,12 +10,16 @@
 ```sh
 # Assign Apache release version number to variable `APISIX_VERSION`, for example: 2.6. The latest version can be find at `https://github.com/apache/apisix/releases`
 
-export APISIX_VERSION=2.6
+export APISIX_VERSION=2.9
 # alpine
 $ make build-on-alpine
 
 # centos
 $ make build-on-centos
+
+#ubuntu
+$ make build-on-ubuntu
+
 ```
 
 2. Build from master branch version, which has latest code(ONLY for the developer's convenience):

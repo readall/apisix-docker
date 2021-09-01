@@ -24,6 +24,10 @@ APISIX_DASHBOARD_VERSION ?= 2.7.1
 APISIX_DASHBOARD_IMAGE_NAME = apache/apisix-dashboard
 APISIX_DASHBOARD_IMAGE_TAR_NAME = apache_apisix_dashboard
 
+### build-on-ubuntu:      Build apache/apisix:xx-ubuntu image
+build-on-ubuntu:
+	docker build -t $(IMAGE_NAME):$(APISIX_VERSION)-ubuntu -f ./ubuntu/Dockerfile .
+
 ### build-on-centos:      Build apache/apisix:xx-centos image
 build-on-centos:
 	docker build -t $(IMAGE_NAME):$(APISIX_VERSION)-centos -f ./centos/Dockerfile .
@@ -44,6 +48,14 @@ push-on-centos:
 	docker push $(IMAGE_NAME):$(APISIX_VERSION)-centos
 	docker build -t $(IMAGE_NAME):latest -f ./centos/Dockerfile .
 	docker push $(IMAGE_NAME):latest
+
+### push-on-ubuntu:       Push apache/apisix:xx-ubuntu image
+# ubuntu not support multiarch since it rely on x86 apt package
+push-on-centos:
+	docker push $(IMAGE_NAME):$(APISIX_VERSION)-ubuntu
+	docker build -t $(IMAGE_NAME):latest -f ./ubuntu/Dockerfile .
+	docker push $(IMAGE_NAME):latest
+
 
 ### push-on-alpine:       Push apache/apisix:xx-alpine image
 push-multiarch-on-alpine:
