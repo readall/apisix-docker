@@ -1,7 +1,7 @@
 ARG ENABLE_PROXY=false
-ARG ETCD_VERSION=v3.4.14
-ARG APISIX_VERSION=master
-ARG APISIX_DASHBOARD_VERSION=master
+ARG ETCD_VERSION=v3.5.0
+ARG APISIX_VERSION=2.9
+ARG APISIX_DASHBOARD_VERSION=2.7.1
 
 # Build Apache APISIX
 FROM openresty/openresty:1.19.3.1-alpine-fat AS production-stage
@@ -32,7 +32,7 @@ RUN set -x \
 
 
 # Build etcd
-FROM alpine:3.13 AS etcd-stage
+FROM alpine:latest AS etcd-stage
 
 ARG ETCD_VERSION
 LABEL etcd_version="${ETCD_VERSION}"
@@ -83,7 +83,7 @@ RUN if [ "$ENABLE_PROXY" = "true" ] ; then yarn config set registry https://regi
     && yarn build
 
 # Finally combine all the resources into one image
-FROM alpine:3.13 AS last-stage
+FROM alpine:latest AS last-stage
 
 ARG ENABLE_PROXY
 

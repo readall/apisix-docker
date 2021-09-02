@@ -71,6 +71,7 @@ build-on-alpine-cn:
 ### build-all-in-one:		 Build All in one Docker container for Apache APISIX
 build-all-in-one:
 	docker build -t $(IMAGE_NAME):whole -f ./all-in-one/apisix/Dockerfile .
+	docker build -t $(APISIX_DASHBOARD_IMAGE_NAME):whole -f ./all-in-one/apisix-dashboard/Dockerfile .
 
 ### save-centos-tar:      tar apache/apisix:xx-centos image
 save-centos-tar:
