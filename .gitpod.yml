@@ -1,0 +1,21 @@
+tasks:
+  - init: apt-get install -y netstat
+
+ports:
+  - port: 9080
+    onOpen: ignore
+  - port: 9091
+    onOpen: ignore
+  - port: 9000
+    onOpen: ignore
+  - port: 2379
+    onOpen: ignore
+  - port: 19080
+    onOpen: ignore
+  - port: 19091
+    onOpen: ignore
+  - port: 19000
+    onOpen: ignore
+  - port: 12379
+    onOpen: ignore
+
