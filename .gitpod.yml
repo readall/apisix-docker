@@ -1,5 +1,5 @@
-tasks:
-  - init: apt-get install -y netstat
+# tasks:
+#   - init: apt-get install -y netstat
 
 ports:
   - port: 9080
