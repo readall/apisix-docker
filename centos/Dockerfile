@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:8.3.2011
 
 ARG APISIX_VERSION=2.9
 LABEL apisix_version="${APISIX_VERSION}"

@@ -6,16 +6,17 @@ ARG APISIX_VERSION=2.9
 LABEL apisix_version="${APISIX_VERSION}"
 
 ARG ENABLE_PROXY
-RUN set -x \
-    && apk add --no-cache --virtual .builddeps \
+RUN set -ex; \
+    apt-get update \
+    && apt-get install -y \
     automake \
     autoconf \
     libtool \
-    pkgconfig \
+    pkg-config \
     cmake \
     git \
-    pcre \
-    pcre-dev \
+    libpcre3=2:8.39-12build1 \
+    libpcre3-dev=2:8.39-12build1 \
     && mkdir ~/.luarocks \
     && luarocks config variables.OPENSSL_LIBDIR /usr/local/openresty/openssl/lib \
     && luarocks config variables.OPENSSL_INCDIR /usr/local/openresty/openssl/include \
